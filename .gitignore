@@ -35,4 +35,6 @@ yarn-error.log*
 *.tsbuildinfo
 
 .eslintcache
+eslintcache
+/eslintcache
 
