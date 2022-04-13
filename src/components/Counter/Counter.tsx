@@ -13,9 +13,13 @@ const Counter = ({ description, defaultCount }: CounterProps) => {
       <h2>
         DESC: {description} - DC: {defaultCount}
       </h2>
-      <button onClick={() => setCount(count - 1)}>-</button>
+      <button aria-label="Decrement" onClick={() => setCount(count - 1)}>
+        -
+      </button>
       Current Count: {count}
-      <button onClick={() => setCount(count + 1)}>+</button>
+      <button aria-label="Increment" onClick={() => setCount(count + 1)}>
+        +
+      </button>
     </div>
   );
 };

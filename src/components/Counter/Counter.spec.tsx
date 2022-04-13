@@ -1,22 +1,39 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import Counter from "./Counter";
 
-describe('initialize with defaultCount of 0 and description of "My Counter"', () => {
-  it("defaultCount=0, then counter = 1", () => {
-    render(<Counter defaultCount={0} description="My Counter" />);
-    expect(screen.getByText("Current Count: 0")).toBeInTheDocument();
-    screen.getByText(/My Counter/);
-  });
+describe("Counter", () => {
+  describe('initialize with defaultCount of 0 and description of "My Counter"', () => {
+    beforeEach(() => {
+      // eslint-disable-next-line testing-library/no-render-in-setup
+      render(<Counter defaultCount={0} description="My Counter" />);
+    });
 
-  it("defaultCount=0, and + clicked then counter = 1", () => {
-    render(<Counter defaultCount={0} description="My Counter" />);
-    fireEvent.click(screen.getByRole("button", { name: "+" }));
-    expect(screen.getByText("Current Count: 1")).toBeInTheDocument();
-  });
+    it("renders current count as 0", () => {
+      expect(screen.getByText("Current Count: 0")).toBeInTheDocument();
+    });
 
-  it("defaultCount=0, and - clicked then counter = -1", () => {
-    render(<Counter defaultCount={0} description="My Counter" />);
-    fireEvent.click(screen.getByRole("button", { name: "-" }));
-    expect(screen.getByText("Current Count: -1")).toBeInTheDocument();
+    it("renders description", () => {
+      expect(screen.getByText(/My Counter/)).toBeInTheDocument();
+    });
+
+    describe("when clicking the + button", () => {
+      beforeEach(() => {
+        fireEvent.click(screen.getByRole("button", { name: "Increment" }));
+      });
+
+      it("increments the count", () => {
+        expect(screen.getByText("Current Count: 1")).toBeInTheDocument();
+      });
+    });
+
+    describe("when clicking the - button", () => {
+      beforeEach(() => {
+        fireEvent.click(screen.getByRole("button", { name: "Decrement" }));
+      });
+
+      it("increments the count", () => {
+        expect(screen.getByText("Current Count: -1")).toBeInTheDocument();
+      });
+    });
   });
 });
