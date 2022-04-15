@@ -64,6 +64,7 @@ describe("Counter", () => {
         fireEvent.click(screen.getByRole("button", { name: "Decrement" }));
         fireEvent.click(screen.getByRole("button", { name: "Decrement" }));
         fireEvent.click(screen.getByRole("button", { name: "Decrement" }));
+        fireEvent.click(screen.getByRole("button", { name: "Decrement" }));
       });
 
       it("increments the count", () => {
