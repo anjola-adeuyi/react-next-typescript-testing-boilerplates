@@ -55,7 +55,7 @@ describe("Counter", () => {
       });
 
       it("increments the count", () => {
-        expect(screen.getByText("Current Count: -2")).toBeInTheDocument();
+        expect(screen.getByText("Current Count: -3")).toBeInTheDocument();
       });
     });
   });
