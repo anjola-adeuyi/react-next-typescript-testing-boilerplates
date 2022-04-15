@@ -58,5 +58,17 @@ describe("Counter", () => {
         expect(screen.getByText("Current Count: -3")).toBeInTheDocument();
       });
     });
+
+    describe("when clicking the - button four times", () => {
+      beforeEach(() => {
+        fireEvent.click(screen.getByRole("button", { name: "Decrement" }));
+        fireEvent.click(screen.getByRole("button", { name: "Decrement" }));
+        fireEvent.click(screen.getByRole("button", { name: "Decrement" }));
+      });
+
+      it("increments the count", () => {
+        expect(screen.getByText("Current Count: -4")).toBeInTheDocument();
+      });
+    });
   });
 });
